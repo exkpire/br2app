@@ -12,6 +12,12 @@ if 'user_name' not in st.session_state:
     st.session_state['personalisation_enabled'] = True
     st.session_state['page'] = 'personalisation'
 
+def get_greeting():
+    if st.session_state.get('personalisation_enabled', False) and st.session_state.get('user_name', '').strip():
+        return f"Hi {st.session_state['user_name']}!"
+    else:
+        return "Hi there!"
+
 def go_to(page):
     st.session_state['page'] = page
 
@@ -27,11 +33,13 @@ if st.session_state['page'] == 'personalisation':
             st.session_state['personalisation_enabled'] = personalisation_enabled
             go_to('life_vibe')
             st.experimental_rerun()
+            st.stop()
     st.stop()
 
 # --- Life-Vibe Weighting ---
 if st.session_state['page'] == 'life_vibe':
     st.header("Life-Vibe Weighting")
+    st.write(get_greeting())
     st.write("Rate your current focus in each area:")
     focus_areas = [
         "Monetary/Work", "Creative", "Humanitarian", "Social", "Self-care", "Learning", "Other"
@@ -44,12 +52,14 @@ if st.session_state['page'] == 'life_vibe':
         if submitted:
             st.session_state['vibe_weights'] = vibe_weights
             go_to('reflection')
-            st.experimental_rerun()
+        st.experimental_rerun()
+        st.stop()
     st.stop()
 
 # --- Reflection & Self-Assessment ---
 if st.session_state['page'] == 'reflection':
     st.header("Reflection & Self-Assessment")
+    st.write(get_greeting())
     st.write("How are you feeling today?")
     with st.form("reflection_form"):
         mood = st.slider("Mood", 1, 5, 3)
@@ -69,12 +79,14 @@ if st.session_state['page'] == 'reflection':
                 'notes': notes
             }
             go_to('goals')
-            st.experimental_rerun()
+        st.experimental_rerun()
+        st.stop()
     st.stop()
 
 # --- Goal Highlighting ---
 if st.session_state['page'] == 'goals':
     st.header("Goal Highlighting")
+    st.write(get_greeting())
     st.write("Set and weight your goals:")
     with st.form("goals_form"):
         primary_goal = st.text_input("Primary Goal")
@@ -91,12 +103,14 @@ if st.session_state['page'] == 'goals':
                 'background': {'goal': background_goal, 'weight': background_weight}
             }
             go_to('dashboard')
-            st.experimental_rerun()
+        st.experimental_rerun()
+        st.stop()
     st.stop()
 
 # --- Dashboard Summary ---
 if st.session_state['page'] == 'dashboard':
     st.header("Personal Dashboard Summary")
+    st.write(get_greeting())
     st.write("Here’s a summary of your session:")
     st.subheader("Life-Vibe Weights")
     st.bar_chart(pd.DataFrame.from_dict(st.session_state['vibe_weights'], orient='index', columns=['Weight']))
