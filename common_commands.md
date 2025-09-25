@@ -33,6 +33,12 @@ git pull
 pip install streamlit pandas
 ```
 
+## Run Streamlit App Locally
+This will start your app in your web browser. Run this in PowerShell from your project folder.
+```
+streamlit run app.py
+```
+
 ---
 
 Add more commands here as you need them. Copy/paste as needed for your workflow!
