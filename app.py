@@ -33,7 +33,6 @@ if st.session_state['page'] == 'personalisation':
             st.session_state['personalisation_enabled'] = personalisation_enabled
             go_to('life_vibe')
             st.experimental_rerun()
-            st.stop()
     st.stop()
 
 # --- Life-Vibe Weighting ---
@@ -53,8 +52,7 @@ if st.session_state['page'] == 'life_vibe':
             st.session_state['vibe_weights'] = vibe_weights
             go_to('reflection')
         st.experimental_rerun()
-        st.stop()
-    st.stop()
+        # Do not call st.stop() after rerun
 
 # --- Reflection & Self-Assessment ---
 if st.session_state['page'] == 'reflection':
@@ -80,8 +78,7 @@ if st.session_state['page'] == 'reflection':
             }
             go_to('goals')
         st.experimental_rerun()
-        st.stop()
-    st.stop()
+        # Do not call st.stop() after rerun
 
 # --- Goal Highlighting ---
 if st.session_state['page'] == 'goals':
@@ -104,8 +101,7 @@ if st.session_state['page'] == 'goals':
             }
             go_to('dashboard')
         st.experimental_rerun()
-        st.stop()
-    st.stop()
+        # Do not call st.stop() after rerun
 
 # --- Dashboard Summary ---
 if st.session_state['page'] == 'dashboard':
