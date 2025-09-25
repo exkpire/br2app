@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 
@@ -21,8 +20,8 @@ def get_greeting():
 def go_to(page):
     st.session_state['page'] = page
 
-# --- Personalisation Page ---
-if st.session_state['page'] == 'personalisation':
+
+def page_personalisation():
     with st.form("personalisation_form"):
         st.write("Personalize your experience (optional):")
         user_name = st.text_input("Enter your name (or leave blank to skip)")
@@ -33,10 +32,11 @@ if st.session_state['page'] == 'personalisation':
             st.session_state['personalisation_enabled'] = personalisation_enabled
             go_to('life_vibe')
             st.experimental_rerun()
+            return
     st.stop()
 
-# --- Life-Vibe Weighting ---
-if st.session_state['page'] == 'life_vibe':
+
+def page_life_vibe():
     st.header("Life-Vibe Weighting")
     st.write(get_greeting())
     st.write("Rate your current focus in each area:")
@@ -51,11 +51,11 @@ if st.session_state['page'] == 'life_vibe':
         if submitted:
             st.session_state['vibe_weights'] = vibe_weights
             go_to('reflection')
-        st.experimental_rerun()
-        # Do not call st.stop() after rerun
+            st.experimental_rerun()
+            return
 
-# --- Reflection & Self-Assessment ---
-if st.session_state['page'] == 'reflection':
+
+def page_reflection():
     st.header("Reflection & Self-Assessment")
     st.write(get_greeting())
     st.write("How are you feeling today?")
@@ -77,11 +77,11 @@ if st.session_state['page'] == 'reflection':
                 'notes': notes
             }
             go_to('goals')
-        st.experimental_rerun()
-        # Do not call st.stop() after rerun
+            st.experimental_rerun()
+            return
 
-# --- Goal Highlighting ---
-if st.session_state['page'] == 'goals':
+
+def page_goals():
     st.header("Goal Highlighting")
     st.write(get_greeting())
     st.write("Set and weight your goals:")
@@ -100,11 +100,11 @@ if st.session_state['page'] == 'goals':
                 'background': {'goal': background_goal, 'weight': background_weight}
             }
             go_to('dashboard')
-        st.experimental_rerun()
-        # Do not call st.stop() after rerun
+            st.experimental_rerun()
+            return
 
-# --- Dashboard Summary ---
-if st.session_state['page'] == 'dashboard':
+
+def page_dashboard():
     st.header("Personal Dashboard Summary")
     st.write(get_greeting())
     st.write("Here’s a summary of your session:")
@@ -118,10 +118,11 @@ if st.session_state['page'] == 'dashboard':
     if st.button("Finish & See Big Pitch"):
         go_to('big_pitch')
         st.experimental_rerun()
+        return
     st.stop()
 
-# --- Big Pitch Recap ---
-if st.session_state['page'] == 'big_pitch':
+
+def page_big_pitch():
     st.header("The Big Pitch: Why This Matters")
     st.markdown("""
     Imagine waking up and actually feeling in sync with your own life—not just chasing tasks, but seeing real progress, catching burnout before it starts, and having a system that adapts to you, not the other way around.
@@ -203,3 +204,17 @@ if st.session_state['page'] == 'big_pitch':
 
     Let’s build something that actually makes a difference. Let’s make self-reflection, progress tracking, and real support the new normal.
     """)
+
+# --- Routing Logic ---
+
+page_map = {
+    'personalisation': page_personalisation,
+    'life_vibe': page_life_vibe,
+    'reflection': page_reflection,
+    'goals': page_goals,
+    'dashboard': page_dashboard,
+    'big_pitch': page_big_pitch
+}
+
+page_func = page_map.get(st.session_state['page'], page_personalisation)
+page_func()

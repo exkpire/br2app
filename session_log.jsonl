@@ -1,0 +1,3 @@
+{"life_vibe": "Monetary (work, finances)", "vibe_weight": 3, "goals": {}, "spark": 4}
+{"life_vibe": "Monetary (work, finances)", "vibe_weight": 5, "goals": {"primary": {"goal": "sleep", "weight": 2}}, "energy": 2, "mood": 5, "primary_task": 11, "stress": 2, "sleep": 1, "social": 4, "habit": ["sleep"], "focus_minutes": [5, 5], "spark": 4}
+{"life_vibe": "Monetary (work, finances)", "vibe_weight": 2, "goals": {"primary": {"goal": "2", "weight": 2}, "secondary": {"goal": "2", "weight": 2}, "background": {"goal": "2", "weight": 2}}, "energy": 1, "mood": 2, "primary_task": 3, "stress": 2, "sleep": 3, "social": 2, "habit": ["sleep more", "1"], "focus_minutes": [], "spark": 4}

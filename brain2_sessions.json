@@ -1,0 +1,70 @@
+[
+  {
+    "timestamp": "2025-09-25T03:47:23.505822",
+    "session": {
+      "energy": 1,
+      "mood": 1,
+      "priority": 1,
+      "habit": "work on music",
+      "focus_minutes": 20,
+      "spark": "music",
+      "followups": {
+        "energy_tips_shown": true,
+        "mood_boost_shown": true,
+        "tiny_wins_enabled": true
+      }
+    },
+    "demos": {
+      "demo1": {
+        "energy": 1,
+        "mood": 1,
+        "priority": 1
+      },
+      "followups": {
+        "energy_tips_shown": true,
+        "mood_boost_shown": true,
+        "tiny_wins_enabled": true
+      },
+      "demo2": {
+        "habit": "work on music",
+        "frequency": "once a day"
+      },
+      "demo3": {
+        "sprint_minutes": 20,
+        "suggestion": "two sprints back-to-back, then a longer break"
+      },
+      "demo4": {
+        "spark": "music",
+        "challenge": "Spend 10 minutes on 'music' or explore a tiny related idea."
+      }
+    }
+  },
+  {
+    "timestamp": "2025-09-25T03:55:58.846430",
+    "session": {
+      "energy": 5,
+      "mood": 5,
+      "priority": 5
+    },
+    "demos": {
+      "demo1": {
+        "energy": 5,
+        "mood": 5,
+        "priority": 5
+      },
+      "followups": {},
+      "demo2": {
+        "habit": "fuck",
+        "frequency": "once a day"
+      },
+      "demo3": {
+        "sprint_minutes": 10,
+        "pattern": "sprint + small micro-reward (song/snack)"
+      },
+      "demo4": {
+        "spark": "music",
+        "challenge": "Spend 10 minutes exploring 'music' or a tiny related idea."
+      }
+    }
+  }
+]
